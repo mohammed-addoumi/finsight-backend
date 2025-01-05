@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: vite-project-backend
+  profiles:
+    active:
+      - dev

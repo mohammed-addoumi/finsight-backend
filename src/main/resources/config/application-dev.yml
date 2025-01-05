@@ -1,0 +1,14 @@
+server:
+  port: 8080
+#  ssl:
+#    enabled: true
+#    key-store: classpath:keystore.p12
+#    key-store-password: simoQB24188
+#    key-store-type: PKCS12
+#    key-alias: selfsigned
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vite-project
+    username: myuser
+    password: mypassword
