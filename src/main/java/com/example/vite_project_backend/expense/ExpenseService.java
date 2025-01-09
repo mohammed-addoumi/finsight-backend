@@ -1,6 +1,7 @@
 package com.example.vite_project_backend.expense;
 
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -35,5 +36,12 @@ public class ExpenseService {
       log.error("Error occurred while saving expense: {}", e.getMessage(), e);
       throw e; // Re-throw exception to handle it at the controller level
     }
+  }
+
+  public Boolean deleteExpenseByExpenseId(Long expenseId) {
+    Optional<Expense> fetchedExpenseToBeDeleted = expenseRepository.findById(expenseId);
+    if (fetchedExpenseToBeDeleted.isEmpty()) return false;
+    expenseRepository.deleteById(expenseId);
+    return true;
   }
 }
