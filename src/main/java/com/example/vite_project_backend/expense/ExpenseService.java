@@ -1,5 +1,6 @@
 package com.example.vite_project_backend.expense;
 
+import com.example.vite_project_backend.exceptions.ExpenseNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -42,6 +43,25 @@ public class ExpenseService {
     Optional<Expense> fetchedExpenseToBeDeleted = expenseRepository.findById(expenseId);
     if (fetchedExpenseToBeDeleted.isEmpty()) return false;
     expenseRepository.deleteById(expenseId);
+    return true;
+  }
+
+  public Expense getExpenseById(Long id) {
+    return expenseRepository.findById(id).orElseThrow(ExpenseNotFoundException::new);
+  }
+
+  public Boolean updateExpense(Expense expense) {
+    Optional<Expense> expenseOptional = expenseRepository.findById(expense.getId());
+    Expense expenseToBeSaved = expenseOptional.orElseThrow(ExpenseNotFoundException::new);
+    expenseToBeSaved.setAmount(expense.getAmount());
+    expenseToBeSaved.setDate(expense.getDate());
+    expenseToBeSaved.setDescription(expense.getDescription());
+    expenseToBeSaved.setMerchant(expense.getMerchant());
+    expenseToBeSaved.setStatus(expense.getStatus());
+    expenseToBeSaved.setCategory(expense.getCategory());
+    expenseToBeSaved.setPaymentMethod(expense.getPaymentMethod());
+    expenseToBeSaved.setUsername(expense.getUsername());
+    expenseRepository.save(expenseToBeSaved);
     return true;
   }
 }

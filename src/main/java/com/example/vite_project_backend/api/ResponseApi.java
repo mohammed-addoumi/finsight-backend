@@ -1,6 +1,8 @@
 package com.example.vite_project_backend.api;
 
+import com.example.vite_project_backend.expense.ExpenseDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 
@@ -22,5 +24,9 @@ public class ResponseApi<T> {
     responseApi.setCodeStatus(HttpStatus.OK.value());
     responseApi.setMessage("data fetched successefuly");
     return responseApi;
+  }
+
+  public static ResponseApi<List<ExpenseDto>> error(String s) {
+    return null;
   }
 }

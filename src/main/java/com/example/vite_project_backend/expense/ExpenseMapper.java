@@ -17,6 +17,7 @@ public class ExpenseMapper {
 
   public static Expense toExpense(ExpenseDto expenseDto) {
     return Expense.builder()
+        .id(expenseDto.getExpenseId())
         .date(expenseDto.getDate())
         .description(expenseDto.getDescription())
         .amount(expenseDto.getAmount())
