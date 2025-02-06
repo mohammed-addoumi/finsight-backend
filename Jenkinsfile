@@ -5,6 +5,11 @@ pipeline {
             maven 'Maven 3'
         }
 
+    environment {
+            DOCKER_IMAGE = 'mohammedaddoumi/finsight-backend'
+        }
+
+
     stages {
         stage('Checkout') {
             steps {
@@ -27,6 +32,14 @@ pipeline {
                 }
             }
         }
+
+        stage('Build Docker Image') {
+                    steps {
+                        script {
+                            sh "docker build -t ${DOCKER_IMAGE}:latest ."
+                        }
+                    }
+                }
     }
 
     post {
