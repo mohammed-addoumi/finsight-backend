@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'develop', url: 'https://https://github.com/mohammed-addoumi/finsight-backend.git'
+                git branch: 'develop', url: 'https://github.com/mohammed-addoumi/finsight-backend.git'
             }
         }
 
