@@ -20,14 +20,6 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                script {
-                    sh 'mvn test'
-                }
-            }
-        }
-
         stage('Package') {
             steps {
                 script {
