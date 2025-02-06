@@ -7,13 +7,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -44,7 +43,7 @@ public class ExpenseController {
   public ResponseEntity<ResponseApi<List<ExpenseDto>>> getAllExpensesByUsername(
       @PathVariable String username) {
     log.info("Request received to fetch all expenses for username: {}", username);
-    if(1 == 1) {
+    if (1 == 1) {
       throw new IllegalArgumentException("test circuit breaker");
     }
     try {
